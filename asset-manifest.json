@@ -1,0 +1,16 @@
+{
+  "files": {
+    "main.css": "/madadgaar/static/css/main.d8cfb81a.css",
+    "main.js": "/madadgaar/static/js/main.985319a4.js",
+    "static/media/main.svg": "/madadgaar/static/media/main.573a54fc9f43483e0bb8699b91030877.svg",
+    "static/media/main-ver.svg": "/madadgaar/static/media/main-ver.1d3d359420cef2477c4d3851c70c69c4.svg",
+    "static/media/insert.svg": "/madadgaar/static/media/insert.02c4a41242cb2e6b57f4baf7565e369f.svg",
+    "index.html": "/madadgaar/index.html",
+    "main.d8cfb81a.css.map": "/madadgaar/static/css/main.d8cfb81a.css.map",
+    "main.985319a4.js.map": "/madadgaar/static/js/main.985319a4.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d8cfb81a.css",
+    "static/js/main.985319a4.js"
+  ]
+}
