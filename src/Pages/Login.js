@@ -1,8 +1,26 @@
 import React from 'react';
 import logoImage from '../images/main.svg';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import {useState} from "react";
+import axios from "axios";
 
 export default function Login() {
+    const [email, setEmail] = useState(' ');
+    const [password, setPassword] = useState(' ');
+    const navigate = useNavigate();
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        axios
+            .post('http://localhost:3001/Login', { email, password })
+            .then((result) => {
+                console.log(result)
+                if(result.data === "Success") {
+                    navigate('/Home')
+                }
+            })
+            .catch((err) => console.log(err));
+    };
     return (
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 mt-36">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">
@@ -32,6 +50,7 @@ export default function Login() {
                                 type="email"
                                 autoComplete="email"
                                 placeholder="Email"
+                                onChange={(e)=>{setEmail(e.target.value)}}
                                 required
                                 className="px-5 block w-full rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 drop-shadow-lg"
                             />
@@ -60,6 +79,7 @@ export default function Login() {
                                 name="password"
                                 type="password"
                                 placeholder="Password"
+                                onChange={(e)=>{setPassword(e.target.value)}}
                                 autoComplete="current-password"
                                 required
                                 className="px-4 block w-full rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 drop-shadow-lg"
@@ -70,6 +90,7 @@ export default function Login() {
                     <div>
                         <button
                             type="submit"
+                            onClick={handleSubmit}
                             className="w-full mx-auto text-white bg-[#02D1AC] hover:bg-[#01998B] focus:outline-none focus:ring-4 focus:ring-[#01998B] font-Gilroy font-semibold text-m rounded-full px-5 py-2.5 text-center dark:bg-[#02D1AC] dark:hover:bg-[#01998B] dark:focus:ring-[#01998B] drop-shadow-md"
                         >
                             Sign in
