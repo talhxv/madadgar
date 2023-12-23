@@ -1,6 +1,7 @@
 import React from 'react';
 import logoImage from '../images/main.svg';
 import {Link} from 'react-router-dom';
+
 export default function Login() {
     return (
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 mt-36">
@@ -77,12 +78,12 @@ export default function Login() {
                 </form>
 
                 <p className="mt-10 text-center font-Gilroy text-sm text-gray-500">
-                   Dont have an account yet?
+                    Dont have an account yet?
 
                     <p
                         className="font-semibold font-Gilroy leading-6 text-[#02D1AC] hover:text-[#02D1AC]"
                     >
-                        <Link to={"/Register"} >
+                        <Link to={"/Register"}>
                             Create right now
                         </Link>
                     </p>

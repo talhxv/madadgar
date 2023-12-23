@@ -5,12 +5,12 @@ module.exports = {
     ],
     theme: {
         extend: {
-            fontFamily:{
+            fontFamily: {
                 Gilroy: ['Gilroy', 'Gilroy'],
             },
         },
     },
     plugins: [
         require('@tailwindcss/forms'),
-        ]
+    ]
 }
