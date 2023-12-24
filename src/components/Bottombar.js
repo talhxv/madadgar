@@ -4,16 +4,18 @@ import home from '../images/bottom/Home.svg';
 import fav from '../images/bottom/Heart.svg';
 import profile from '../images/bottom/Profile.svg';
 import inbox from '../images/bottom/Inbox.svg';
-
+import {Link} from "react-router-dom";
 export default function Bottombar() {
     return (
         <>
             {/* Overlay */}
             {/* Icons */}
             <div className="fixed flex justify-around items-end w-full bottom-7 z-10">
+                <Link to={'/Home'}>
                 <img src={home}
                      className="h-7 w-7"
                      alt="Home"/>
+                </Link>
                 <img src={inbox}
                      className="h-7 w-7"
                      alt="Inbox"/>

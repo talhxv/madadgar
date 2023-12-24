@@ -7,6 +7,8 @@ import Register from "./Pages/Register";
 import CreateJob from "./Pages/CreateJob";
 import PopUpConfirm from "./Pages/PopUpConfirm";
 import Home from "./Pages/Home";
+import Test from "./Pages/Test";
+
 function App() {
     return (
         <Router>
@@ -20,9 +22,11 @@ function App() {
                 <Route path="/CreateJob"
                        element={<CreateJob/>}/>
                 <Route path="/Popup"
-                       element={<PopUpConfirm />} />
+                       element={<PopUpConfirm/>}/>
                 <Route path="/Home"
-                       element={<Home />} />
+                       element={<Home/>}/>
+                <Route path="/Test"
+                       element={<Test/>}/>
             </Routes>
         </Router>
     );

@@ -6,15 +6,6 @@ import Bottombar from '../components/Bottombar';
 import InsertImage from '../images/add-photo.svg';
 
 export default function CreateJob() {
-    useEffect(() => {
-        // Prevent scrolling when the component mounts
-        document.documentElement.style.overflowY = 'hidden';
-
-        // Re-enable scrolling when the component unmounts
-        return () => {
-            document.documentElement.style.overflowY = 'scroll';
-        };
-    }, []);
     // Assume categories will be fetched from the backend and stored in state
     const [categories, setCategories] = useState([]);
 
@@ -33,25 +24,27 @@ export default function CreateJob() {
 
     return (
         <div className="relative">
-            <Topbar />
-            <div className="min-h-screen bg-gradient-to-t from-gray-200 to-transparent mt-32">
-                <div className="max-w-md mx-auto p-6 rounded-md mt-8">
-                    <h2 className="text-2xl font-Gilroy font-bold mt-16"> Enter your job details 🛠️ </h2>
+            <Topbar text="Create a Job 👍" />
+            <div className="min-h-screen bg-gradient-to-t from-gray-200 to-transparent mt-24">
+                <div className="max-w-md mx-auto p-6 rounded-md mt-3">
+                    <h2 className="text-2xl font-Gilroy font-bold"> Enter your job details 🛠️ </h2>
                     <form>
                         <div className="mt-4">
                             <label htmlFor="jobTitle"
                                    className="block text-gray-700 text-sm font-Gilroy font-bold mb-2">Title</label>
                             <input type="text"
+                                   placeholder="Enter your task 🔨"
                                    id="jobTitle"
                                    name="jobTitle"
-                                   className="w-full p-2 border font-Gilroy border-gray-300 rounded"/>
+                                   className="w-full p-2 border font-Gilroy border-gray-300 rounded-2xl"/>
                         </div>
                         <div className="mt-4">
                             <label htmlFor="jobDetails"
-                                   className="block text-gray-700 text-sm font-bold font-Gilroy mb-2">Details</label>
+                                   className="block text-gray-700 text-sm font-bold font-Gilroy mb-2 ">Details</label>
                             <textarea id="jobDetails"
+                                      placeholder="Give relevant details 📝"
                                       name="jobDetails"
-                                      className="w-full p-2 border font-Gilroy border-gray-300 rounded"
+                                      className="w-full p-2 border font-Gilroy border-gray-300 rounded-2xl"
                                       rows="4"></textarea>
                         </div>
                         <div className="mt-4">
@@ -59,9 +52,9 @@ export default function CreateJob() {
                                    className="block text-gray-700 text-sm font-bold font-Gilroy mb-2">Category</label>
                             <select id="category"
                                     name="category"
-                                    className="w-full p-2 border font-Gilroy border-gray-300 rounded">
+                                    className="w-full p-2 border font-Gilroy border-gray-300 rounded-2xl">
                                 <option value=""
-                                        disabled>Select a category
+                                        disabled selected> Choose job category 🗂️
                                 </option>
                                 {categories.map(category => (
                                     <option key={category.id}

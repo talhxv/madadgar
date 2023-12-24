@@ -14,13 +14,19 @@ export default function Login() {
         axios
             .post('http://localhost:3001/Login', { email, password })
             .then((result) => {
-                console.log(result)
-                if(result.data === "Success") {
-                    navigate('/Home')
+                console.log(result);
+                const { success, user } = result.data;
+                if (success) {
+                    // Navigate to Home with state
+                    navigate('/Home', { state: { user } });
+                } else {
+                    console.log("Login failed");
+                    // Handle failed login, show error message, etc.
                 }
             })
             .catch((err) => console.log(err));
     };
+
     return (
         <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8 mt-36">
             <div className="sm:mx-auto sm:w-full sm:max-w-sm">

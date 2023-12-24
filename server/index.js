@@ -10,22 +10,21 @@ const UsersModel = require('./models/users')
 mongoose.connect("mongodb://127.0.0.1:27017/madadgar");
 
 app.post("/login", (req, res) => {
-    const{email, password} = req.body;
-    UsersModel.findOne({email:email})
-        .then(user=> {
-            if(user) {
-                if(user.password === password) {
-                    res.json("Success")
-                }
-                else
-                {
-                    res.json("the password was Incorrect")
+    const { email, password } = req.body;
+    UsersModel.findOne({ email: email })
+        .then(user => {
+            if (user) {
+                if (user.password === password) {
+                    res.json({ success: true, user: { name: user.name } });
+                } else {
+                    res.json({ success: false, message: "Incorrect password" });
                 }
             } else {
-                res.json("No record exists")
+                res.json({ success: false, message: "User not found" });
             }
         })
-})
+});
+
 app.post("/Register", (req, res)=>{
     UsersModel.create(req.body)
         .then(users => res.json(users))
