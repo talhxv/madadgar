@@ -7,6 +7,7 @@ app.use(express.json());
 app.use(cors());
 
 const UsersModel = require('./models/users')
+const CategoriesModel = require('./models/categories')
 mongoose.connect("mongodb://127.0.0.1:27017/madadgar");
 
 app.post("/login", (req, res) => {
@@ -34,6 +35,14 @@ app.get('/api/users', async (req, res) => {
     try {
         const users = await UsersModel.find();
         res.json(users);
+    } catch (error) {
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+});
+app.get("/api/categories", async (req, res) => {
+    try {
+        const categories = await CategoriesModel.find();
+        res.json(categories);
     } catch (error) {
         res.status(500).json({ error: 'Internal Server Error' });
     }

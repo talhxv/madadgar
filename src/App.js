@@ -8,7 +8,7 @@ import CreateJob from "./Pages/CreateJob";
 import PopUpConfirm from "./Pages/PopUpConfirm";
 import Home from "./Pages/Home";
 import Test from "./Pages/Test";
-
+import Profile from "./Pages/Profile";
 function App() {
     return (
         <Router>
@@ -27,6 +27,8 @@ function App() {
                        element={<Home/>}/>
                 <Route path="/Test"
                        element={<Test/>}/>
+                <Route path="/Profile"
+                       element={<Profile />} />
             </Routes>
         </Router>
     );

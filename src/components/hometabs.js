@@ -1,8 +1,8 @@
 import React from "react";
-import Createjob from "../images/hometabs/plus.svg";
-import Search from "../images/hometabs/search.svg";
-import Categories from "../images/hometabs/categories.svg";
-import JobHistory from "../images/hometabs/oldjobs.svg";
+import Createjob from "../images/hometabs/CreateJob.svg";
+import Search from "../images/hometabs/Search.svg";
+import Categories from "../images/hometabs/Categories.svg";
+import JobHistory from "../images/hometabs/JobHistory.svg";
 import {Link} from "react-router-dom";
 
 const Hometabs = () => {

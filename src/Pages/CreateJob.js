@@ -4,8 +4,13 @@ import React, { useState, useEffect } from "react";
 import Topbar from "../components/Topbar";
 import Bottombar from '../components/Bottombar';
 import InsertImage from '../images/add-photo.svg';
+import {useLocation, useNavigate} from "react-router-dom";
 
 export default function CreateJob() {
+    const location = useLocation();
+    const history =useNavigate();
+    const storedUser = JSON.parse(localStorage.getItem("user"));
+    const [user, setUser] = useState(storedUser || (location.state && location.state.user) || null);
     // Assume categories will be fetched from the backend and stored in state
     const [categories, setCategories] = useState([]);
 
@@ -14,15 +19,15 @@ export default function CreateJob() {
         // Replace this with your actual API call to fetch categories
         const fetchCategories = async () => {
             // Example: Fetch categories from the backend
-            const response = await fetch('https://example.com/api/categories');
+            const response = await fetch('http://localhost:3001/api/categories');
             const data = await response.json();
             setCategories(data); // Update state with fetched categories
         };
 
         fetchCategories();
     }, []); // Empty dependency array to run the effect only once on component mount
-
     return (
+
         <div className="relative">
             <Topbar text="Create a Job 👍" />
             <div className="min-h-screen bg-gradient-to-t from-gray-200 to-transparent mt-24">
@@ -52,13 +57,13 @@ export default function CreateJob() {
                                    className="block text-gray-700 text-sm font-bold font-Gilroy mb-2">Category</label>
                             <select id="category"
                                     name="category"
-                                    className="w-full p-2 border font-Gilroy border-gray-300 rounded-2xl">
+                                    className="w-full p-2 border font-Gilroy border-gray-300 rounded-2xl max-w-full overflow-x-auto">
                                 <option value=""
                                         disabled selected> Choose job category 🗂️
                                 </option>
                                 {categories.map(category => (
-                                    <option key={category.id}
-                                            value={category.id}>
+                                    <option key={category._id}
+                                            value={category._id}>
                                         {category.name}
                                     </option>
                                 ))}
@@ -77,7 +82,7 @@ export default function CreateJob() {
 
             </div>
 
-            <Bottombar/>
+            <Bottombar user={user} />
         </div>
     );
 }
