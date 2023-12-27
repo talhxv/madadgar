@@ -9,6 +9,8 @@ import PopUpConfirm from "./Pages/PopUpConfirm";
 import Home from "./Pages/Home";
 import Test from "./Pages/Test";
 import Profile from "./Pages/Profile";
+import madadgarHome from "./Pages/MadadgarHome";
+import Madadgarview from "./Pages/Madadgarview";
 function App() {
     return (
         <Router>
@@ -29,6 +31,8 @@ function App() {
                        element={<Test/>}/>
                 <Route path="/Profile"
                        element={<Profile />} />
+                <Route path="/madadgarhome"
+                       element={madadgarHome()} />
             </Routes>
         </Router>
     );

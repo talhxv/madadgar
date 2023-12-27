@@ -3,14 +3,14 @@ import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
 import 'tailwindcss/tailwind.css';
 
-const MapboxMap = () => {
+const MapboxMaptwo = () => {
     useEffect(() => {
         mapboxgl.accessToken = 'pk.eyJ1IjoidHhsaGEiLCJhIjoiY2xxanNzNjB0MjV3MjJrcnFsYnV0aHBrMSJ9.QQlxdGir8iUl5f5PbW_ouQ';
 
         // Create a map centered at an initial location
         const map = new mapboxgl.Map({
             container: 'map', // container ID
-            style: 'mapbox://styles/txlha/clpnx3cft00zv01p92hpw00xo', // style URL
+            style: 'mapbox://styles/txlha/clqmx6wpt00pl01o9hz94djpm', // style URL
             center: [73.0479, 33.6844], // Default center in case geolocation fails
             zoom: 14, // starting zoom
             attributionControl: false,
@@ -50,4 +50,4 @@ const MapboxMap = () => {
     return <div className="absolute top-0 bottom-0 w-full" id="map"></div>;
 };
 
-export default MapboxMap;
+export default MapboxMaptwo;

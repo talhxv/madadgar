@@ -1,4 +1,3 @@
-// ProfileDrawer.js
 import React from 'react';
 import topbar from '../images/top-bar.svg';
 import profile from '../images/profile-big.svg';
@@ -7,6 +6,7 @@ import frontarrow from '../images/front-arrow.svg';
 import notificationbell from '../images/notificationbell.svg';
 import changemodes from '../images/changemode.svg';
 import logout from '../images/logout.svg';
+import {Link} from "react-router-dom";
 
 const ProfileDrawer = ({ isOpen, onClose, userProfile }) => {
     const drawerAnimation = isOpen ? 'translate-x-0' : 'translate-x-full';
@@ -58,21 +58,28 @@ const ProfileDrawer = ({ isOpen, onClose, userProfile }) => {
                          className="ml-auto"/>
                 </div>
                 <div className="flex items-center mt-6 justify-between px-4">
-                    <div className="flex items-center space-x-2">
-                        <img src={changemodes}
-                             alt="Favorites"/>
-                        <h3 className="text-base font-medium font-Gilroy text-gray-800">Switch Modes to Madadgar </h3>
+                    <Link to="/madadgarhome">
+                    <div className="flex justify-items-center space-x-2">
+
+                            <img src={changemodes}
+                                 alt="Favorites"/>
+                            <h3 className="text-base font-medium font-Gilroy text-gray-800">Switch Modes to
+                                Madadgar</h3>
+
                     </div>
+                    </Link>
                     <img src={frontarrow}
                          alt="Front Arrow"
                          className="ml-auto"/>
                 </div>
                 <div className="absolute bottom-0 right-0 pb-12">
+                    <Link to={'/'}>
                     <img
                         src={logout}
                         alt="Logout"
                         className="cursor-pointer"
                     />
+                    </Link>
                 </div>
             </div>
         </div>

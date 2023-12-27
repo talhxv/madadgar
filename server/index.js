@@ -1,14 +1,17 @@
 const express = require("express");
 const mongoose = require('mongoose');
+const jobsRouter = require('./routes/jobs');
 const cors = require("cors");
 const app = express();
 app.use(express.json());
 
 app.use(cors());
-
 const UsersModel = require('./models/users')
 const CategoriesModel = require('./models/categories')
-mongoose.connect("mongodb://127.0.0.1:27017/madadgar");
+mongoose.connect("mongodb://127.0.0.1:27017/madadgar", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+})
 
 app.post("/login", (req, res) => {
     const { email, password } = req.body;
@@ -47,6 +50,8 @@ app.get("/api/categories", async (req, res) => {
         res.status(500).json({ error: 'Internal Server Error' });
     }
 });
+app.use(express.json());
+app.use(jobsRouter);
 app.listen(3001, ()=> {
     console.log("server is running")
 })
