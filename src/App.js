@@ -9,8 +9,8 @@ import PopUpConfirm from "./Pages/PopUpConfirm";
 import Home from "./Pages/Home";
 import Test from "./Pages/Test";
 import Profile from "./Pages/Profile";
-import madadgarHome from "./Pages/MadadgarHome";
-import Madadgarview from "./Pages/Madadgarview";
+import MadadgarHome from "./Pages/MadadgarHome";
+import Viewjobs from "./Pages/ViewJobs";
 function App() {
     return (
         <Router>
@@ -32,7 +32,9 @@ function App() {
                 <Route path="/Profile"
                        element={<Profile />} />
                 <Route path="/madadgarhome"
-                       element={madadgarHome()} />
+                       element={<MadadgarHome />} />
+                <Route path="/Viewjobs"
+                       element={<Viewjobs />} />
             </Routes>
         </Router>
     );

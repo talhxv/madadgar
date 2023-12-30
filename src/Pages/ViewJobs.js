@@ -2,6 +2,6 @@ import React from 'react';
 
 export default function Viewjobs() {
     return (
-        <h1> hello nibbas </h1>
+        <h1> hello  </h1>
     );
 }
