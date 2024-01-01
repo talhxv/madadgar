@@ -11,6 +11,8 @@ import Test from "./Pages/Test";
 import Profile from "./Pages/Profile";
 import MadadgarHome from "./Pages/MadadgarHome";
 import Viewjobs from "./Pages/ViewJobs";
+import Insertimages from "./Pages/insertimages";
+import ViewCategories from "./Pages/ViewCategories";
 function App() {
     return (
         <Router>
@@ -35,6 +37,10 @@ function App() {
                        element={<MadadgarHome />} />
                 <Route path="/Viewjobs"
                        element={<Viewjobs />} />
+                <Route path="/insertimages"
+                       element={<Insertimages />} />
+                <Route path='/ViewCategories'
+                       element={<ViewCategories />} />
             </Routes>
         </Router>
     );

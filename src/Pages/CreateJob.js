@@ -11,6 +11,15 @@ export default function CreateJob() {
     const [formData, setFormData] = useState({
         jobTitle: "", jobDetails: "", category: "", image: null, // For storing the selected image file
     });
+    useEffect(() => {
+        // Check if there is a selected category in the state
+        const selectedCategory = location.state?.selectedCategory;
+
+        if (selectedCategory && selectedCategory !== formData.category) {
+            // Set the selected category in the form data
+            setFormData({ ...formData, category: selectedCategory });
+        }
+    }, [location.state, formData]);
 
     useEffect(() => {
         const fetchCategories = async () => {
@@ -25,7 +34,6 @@ export default function CreateJob() {
 
         fetchCategories();
     }, []);
-
     const handleImageChange = (e) => {
         const file = e.target.files[0];
         setFormData({...formData, image: file});
@@ -53,12 +61,17 @@ export default function CreateJob() {
 
             if (data.success) {
                 console.log("Job created successfully:", data.job);
+
+                // Reset the form data
                 setFormData({
                     jobTitle: "",
                     jobDetails: "",
                     category: "",
                     image: null,
                 });
+
+                // Reload the page to reflect the changes
+                window.location.reload();
 
                 // Optionally, redirect or perform other actions after successful creation
             } else {
@@ -68,6 +81,8 @@ export default function CreateJob() {
             console.error("Error:", error);
         }
     };
+
+
     return (<div className="relative">
             <Topbar text="Create a Job 👍"/>
             <div className="min-h-screen bg-gradient-to-t from-gray-200 to-transparent mt-24">
@@ -103,7 +118,8 @@ export default function CreateJob() {
                                 id="category"
                                 name="category"
                                 className="w-full p-2 border font-Gilroy border-gray-300 rounded-2xl max-w-full overflow-x-auto"
-                                onChange={(e) => setFormData({...formData, category: e.target.value})}
+                                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                                value={formData.category}
                             >
                                 <option value=""
                                         disabled
