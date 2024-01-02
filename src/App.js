@@ -13,6 +13,9 @@ import MadadgarHome from "./Pages/MadadgarHome";
 import Viewjobs from "./Pages/ViewJobs";
 import Insertimages from "./Pages/insertimages";
 import ViewCategories from "./Pages/ViewCategories";
+import Viewjobdetails from "./Pages/Viewjobdetails";
+import Pendingjobs from "./Pages/Pendingjobs";
+
 function App() {
     return (
         <Router>
@@ -32,15 +35,23 @@ function App() {
                 <Route path="/Test"
                        element={<Test/>}/>
                 <Route path="/Profile"
-                       element={<Profile />} />
+                       element={<Profile/>}/>
                 <Route path="/madadgarhome"
-                       element={<MadadgarHome />} />
+                       element={<MadadgarHome/>}/>
                 <Route path="/Viewjobs"
-                       element={<Viewjobs />} />
+                       element={<Viewjobs/>}/>
                 <Route path="/insertimages"
-                       element={<Insertimages />} />
+                       element={<Insertimages/>}/>
                 <Route path='/ViewCategories'
-                       element={<ViewCategories />} />
+                       element={<ViewCategories/>}/>
+                <Route path='/ViewJobs'
+                       element={<Viewjobs/>}/>
+                <Route path={'/Viewjobdetails'}
+                       element ={<Viewjobdetails />} />
+                <Route path="/viewjobdetails/:id"
+                       element={<Viewjobdetails/>}/>
+                <Route path={'/Viewpendingjobs'}
+                       element={<Pendingjobs />} />
             </Routes>
         </Router>
     );

@@ -75,6 +75,9 @@ app.post("/api/categories", upload.single('img'), async (req, res) => {
     }
 });
 
+app.use('/uploads', express.static('uploads'));
+
+
 app.use(express.json());
 app.use(jobsRouter);
 app.listen(3001, ()=> {

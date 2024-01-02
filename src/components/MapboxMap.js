@@ -36,7 +36,7 @@ const MapboxMap = () => {
                 geolocateButton.style.color = '#fff'; // Change the text color
                 geolocateButton.style.borderRadius = '200px'; // Add border-radius
                 geolocateButton.style.position = 'absolute';
-                geolocateButton.style.bottom = '20px'; // Adjust the bottom position as needed
+                geolocateButton.style.bottom = 'calc(20% + 30px)'; // Move downwards by 30%
                 geolocateButton.style.left = '50%'; // Center horizontally
                 geolocateButton.style.transform = 'translateX(-50%)'; // Center horizontally
                 // Add more styles as needed

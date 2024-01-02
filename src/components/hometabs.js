@@ -15,7 +15,9 @@ const Hometabs = () => {
             <Link to={'/ViewCategories'} >
             <img src={Categories} alt="Categories" className="w-16 h-16 drop-shadow-xl" />
             </Link>
+            <Link to={'/Viewpendingjobs'}>
             <img src={JobHistory} alt="Job History" className="w-16 h-16 drop-shadow-xl" />
+            </Link>
         </div>
     );
 };

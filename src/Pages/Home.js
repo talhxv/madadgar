@@ -16,7 +16,7 @@ const Home = () => {
     const isMorning = hours >= 6 && hours < 12;
     const greeting = isMorning ? "Good Morning" : "Good Evening"
 
-
+console.log(user);
     useEffect(() => {
         // Save user to localStorage whenever it changes
         localStorage.setItem("user", JSON.stringify(user));

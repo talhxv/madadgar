@@ -8,8 +8,9 @@ export default function CreateJob() {
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const [user, setUser] = useState(storedUser || (location.state && location.state.user) || null);
     const [categories, setCategories] = useState([]);
+    const [priceRange, setPriceRange] = useState({ start: "", end: "" });
     const [formData, setFormData] = useState({
-        jobTitle: "", jobDetails: "", category: "", image: null, // For storing the selected image file
+        jobTitle: "", jobDetails: "", category: "", image: null, priceRange: { start: "", end: "" }, // For storing the selected image file
     });
     useEffect(() => {
         // Check if there is a selected category in the state
@@ -51,7 +52,10 @@ export default function CreateJob() {
             formDataForBackend.append("jobTitle", formData.jobTitle);
             formDataForBackend.append("jobDetails", formData.jobDetails);
             formDataForBackend.append("category", formData.category);
+            formDataForBackend.append("startPrice", priceRange.start);
+            formDataForBackend.append("endPrice", priceRange.end);
             formDataForBackend.append("image", formData.image);
+            formDataForBackend.append("userName", user.name);
 
             const response = await fetch("http://localhost:3001/api/jobs", {
                 method: "POST", body: formDataForBackend,
@@ -69,9 +73,8 @@ export default function CreateJob() {
                     category: "",
                     image: null,
                 });
-
+                setPriceRange({ start: "", end: "" });
                 // Reload the page to reflect the changes
-                window.location.reload();
 
                 // Optionally, redirect or perform other actions after successful creation
             } else {
@@ -97,7 +100,7 @@ export default function CreateJob() {
                                    id="jobTitle"
                                    name="jobTitle"
                                    value={formData.jobTitle}
-                                   onChange={(e) => setFormData({ ...formData, jobTitle: e.target.value })}
+                                   onChange={(e) => setFormData({...formData, jobTitle: e.target.value})}
                                    className="w-full p-2 border font-Gilroy border-gray-300 rounded-2xl"/>
                         </div>
                         <div className="mt-4">
@@ -107,9 +110,34 @@ export default function CreateJob() {
                                       placeholder="Give relevant details 📝"
                                       name="jobDetails"
                                       value={formData.jobDetails}
-                                      onChange={(e) => setFormData({ ...formData, jobDetails: e.target.value })}
+                                      onChange={(e) => setFormData({...formData, jobDetails: e.target.value})}
                                       className="w-full p-2 border font-Gilroy border-gray-300 rounded-2xl"
                                       rows="4"></textarea>
+                        </div>
+                        <div className="mt-4 flex space-x-4">
+                            <div className="w-1/2">
+                                <input
+                                    type="number"
+                                    id="startPrice"
+                                    name="startPrice"
+                                    value={priceRange.start}
+                                    onChange={(e) => setPriceRange({...priceRange, start: e.target.value})}
+                                    className="w-full p-2 border font-Gilroy border-gray-300 rounded-2xl"
+                                    placeholder="Enter start offer 💵 "
+                                />
+                            </div>
+                            <div className="w-1/2">
+
+                                <input
+                                    type="number"
+                                    id="endPrice"
+                                    name="endPrice"
+                                    value={priceRange.end}
+                                    onChange={(e) => setPriceRange({...priceRange, end: e.target.value})}
+                                    className="w-full p-2 border font-Gilroy border-gray-300 rounded-2xl"
+                                    placeholder="Enter end offer 💵 "
+                                />
+                            </div>
                         </div>
                         <div className="mt-4">
                             <label htmlFor="category"
@@ -118,7 +146,7 @@ export default function CreateJob() {
                                 id="category"
                                 name="category"
                                 className="w-full p-2 border font-Gilroy border-gray-300 rounded-2xl max-w-full overflow-x-auto"
-                                onChange={(e) => setFormData({ ...formData, category: e.target.value })}
+                                onChange={(e) => setFormData({...formData, category: e.target.value})}
                                 value={formData.category}
                             >
                                 <option value=""
@@ -128,8 +156,8 @@ export default function CreateJob() {
                                 </option>
                                 {categories.map((category) => (<option key={category._id}
                                                                        value={category._id}>
-                                        {category.name}
-                                    </option>))}
+                                    {category.name}
+                                </option>))}
                             </select>
                         </div>
                         <div className="mt-4">
@@ -156,6 +184,6 @@ export default function CreateJob() {
                 </div>
             </div>
 
-            <Bottombar user={user}/>
-        </div>);
+        <Bottombar user={user}/>
+    </div>);
 }

@@ -8,6 +8,7 @@ export default function Login() {
     const [email, setEmail] = useState(' ');
     const [password, setPassword] = useState(' ');
     const navigate = useNavigate();
+    const [showPopup, setShowPopup] = useState(false);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,9 +23,16 @@ export default function Login() {
                 } else {
                     console.log("Login failed");
                     // Handle failed login, show error message, etc.
+                    // Update showPopup state to true
+                    setShowPopup(true);
                 }
             })
             .catch((err) => console.log(err));
+    };
+
+    const handlePopupClose = () => {
+        // Close the popup and reset state
+        setShowPopup(false);
     };
 
     return (
@@ -33,7 +41,7 @@ export default function Login() {
                 <img
                     className="m-auto h-30 w-auto"
                     src={logoImage}
-                    alt="Your Company"
+                    alt="Madadgaar"
                 />
             </div>
 
@@ -117,6 +125,22 @@ export default function Login() {
 
                 </p>
             </div>
+            {showPopup && (
+                <div className="p-3 fixed inset-0 z-50 flex items-center justify-center overflow-auto bg-black bg-opacity-50">
+                    <div className="bg-white w-96 p-6 rounded-3xl text-center">
+                        <p className="text-red-500 font-bold font-Gilroy mb-4">
+                            Email or Password is incorrect.
+                        </p>
+                        <button
+                            onClick={handlePopupClose}
+                            className="w-full text-white bg-[#02D1AC] hover:bg-[#01998B] focus:outline-none focus:ring-4 focus:ring-[#01998B] font-Gilroy font-semibold text-m rounded-full px-5 py-2.5"
+                        >
+                            Try Again
+                        </button>
+                    </div>
+                </div>
+            )}
+
         </div>
     );
 }

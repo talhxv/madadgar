@@ -11,6 +11,11 @@ const jobSchema = new mongoose.Schema({
     },
     category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true},
     image: {type: String}, // Assuming the image is stored as a file path or URL
+    priceRange: {
+        start: String,
+        end: String,
+    },
+    createdBy: String,
 });
 
 const Job = mongoose.model('Job', jobSchema);
