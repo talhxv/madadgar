@@ -12,7 +12,7 @@ Madadgar is a home service app that connects users with local service providers 
 
 ## Introduction
 
-Madadgar simplifies the process of finding reliable service providers for home-related tasks. Whether you need plumbing, electrical, or other services, Madadgar connects you with local professionals.
+Madadgar simplifies the process of finding reliable service providers for home-related tasks. Whether you need plumbing, electrical, or other services, Madadgar connects you with local freelance workers willing to lend you a helping hand at the most reasonable prices.
 
 ## Features
 
