@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import axios from 'axios';
-import { useForm } from 'react-hook-form';
+import {useForm} from 'react-hook-form';
 
 const InsertImages = () => {
     const [categories, setCategories] = useState([]);
-    const { register, handleSubmit } = useForm();
+    const {register, handleSubmit} = useForm();
 
     const onSubmit = async (data) => {
         const formData = new FormData();
@@ -18,7 +18,7 @@ const InsertImages = () => {
                 },
             });
 
-            // Update the categories state with the new category
+
             setCategories([...categories, response.data]);
         } catch (error) {
             console.error(error);
@@ -33,12 +33,12 @@ const InsertImages = () => {
                     Category Name:
                     <input {...register('name')} />
                 </label>
-                <br />
+                <br/>
                 <label>
                     Image:
                     <input type="file" {...register('img')} />
                 </label>
-                <br />
+                <br/>
                 <button type="submit">Add Category</button>
             </form>
 
@@ -46,7 +46,9 @@ const InsertImages = () => {
             <ul>
                 {categories.map((category) => (
                     <li key={category._id}>
-                        {category.name} - <img src={`http://localhost:3001/${category.img}`} alt={category.name} style={{ maxWidth: '100px' }} />
+                        {category.name} - <img src={`http://localhost:3001/${category.img}`}
+                                               alt={category.name}
+                                               style={{maxWidth: '100px'}}/>
                     </li>
                 ))}
             </ul>

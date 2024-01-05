@@ -1,21 +1,22 @@
 const express = require('express');
 const multer = require('multer');
-const path = require('path'); // Import the 'path' module
+const path = require('path');
 const Job = require('../models/Job');
+const JobStatus = require('../models/jobStatusModel');
 
 const router = express.Router();
-const upload = multer({ dest: 'uploads/' });
+const upload = multer({dest: 'uploads/'});
 
-// Serve static files from the 'uploads' directory
+
 router.use('/uploads', express.static(path.join(__dirname, '../uploads')));
 
-// Route to handle job creation
+
 router.post('/api/jobs', upload.single('image'), async (req, res) => {
     try {
-        // Extract job data from the request body
-        const { jobTitle, jobDetails, category, startPrice, endPrice, userName } = req.body;
 
-        // Create a new job instance
+        const {jobTitle, jobDetails, category, startPrice, endPrice, userName} = req.body;
+
+
         const job = new Job({
             jobTitle,
             jobDetails,
@@ -28,24 +29,45 @@ router.post('/api/jobs', upload.single('image'), async (req, res) => {
             createdBy: userName,
         });
 
-        // Save the job to the database
+
         await job.save();
 
-        res.status(201).json({ success: true, message: 'Job created successfully', job });
+        res.status(201).json({success: true, message: 'Job created successfully', job});
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: 'Internal server error' });
+        res.status(500).json({success: false, message: 'Internal server error'});
     }
 });
 
+router.post('/api/acceptJob/:jobId', async (req, res) => {
+    try {
+        const {jobId} = req.params;
+        const {userName, completionStatus} = req.body;
+
+
+        const jobStatus = new JobStatus({
+            jobId,
+            acceptance: true,
+            acceptedBy: userName,
+            completionStatus,
+        });
+
+        await jobStatus.save();
+
+        res.status(200).json({success: true, message: 'Job accepted successfully'});
+    } catch (error) {
+        console.error('Error accepting job:', error);
+        res.status(500).json({success: false, message: 'Internal Server Error'});
+    }
+});
 router.get('/api/pendingJobs/:userName', async (req, res) => {
     try {
         const userName = req.params.userName;
-        const pendingJobs = await Job.find({ createdBy: userName });
+        const pendingJobs = await Job.find({createdBy: userName});
         res.status(200).json(pendingJobs);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: 'Internal server error' });
+        res.status(500).json({success: false, message: 'Internal server error'});
     }
 });
 
@@ -55,7 +77,7 @@ router.get('/api/jobs', async (req, res) => {
         res.status(200).json(jobs);
     } catch (error) {
         console.error(error);
-        res.status(500).json({ success: false, message: 'Internal server error' });
+        res.status(500).json({success: false, message: 'Internal server error'});
     }
 });
 

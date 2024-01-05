@@ -1,6 +1,6 @@
 // Viewjobs.js
 
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import {useLocation, useNavigate} from 'react-router-dom';
 import Topbar from '../components/Topbar';
 import Bottombar from '../components/Bottombar';
@@ -30,16 +30,16 @@ export default function Viewjobs() {
     }, []);
 
     const handleButtonClick = (job) => {
-        // Handle button clicks based on the action (Accept or See Details)
+
         console.log('See Details clicked');
-        // Navigate to Viewjobdetails page with the job details
-        navigate(`/viewjobdetails/${job._id}`, { state: { job } });
+
+        navigate(`/viewjobdetails/${job._id}`, {state: {job}});
     };
 
     return (
         <>
             <div className="min-h-screen bg-gradient-to-t from-gray-200 to-transparent mt-16 md:mt-32 relative overflow-hidden">
-                <Topbarzindex text="View Jobs 👁️" />
+                <Topbarzindex text="View Jobs 👁️"/>
                 <div className="mt-10 px-4 md:px-8 font-Gilroy relative z-10">
                     {jobs.map((job) => (
                         <div
@@ -59,7 +59,6 @@ export default function Viewjobs() {
                                             End Offer: Rs {job.priceRange.end}
                                         </p>
                                     </div>
-                                    {/* Add more job details as needed */}
                                 </div>
                             </div>
                             <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 backdrop-blur-lg">
@@ -79,8 +78,7 @@ export default function Viewjobs() {
                         </div>
                     ))}
                 </div>
-                {/* No Blurred overlay */}
-                <Bottombar user={user} />
+                <Bottombar user={user}/>
             </div>
         </>
     );

@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import React, {useEffect, useState} from "react";
+import {useNavigate, useLocation} from "react-router-dom";
 import Topbar from "../components/Topbar";
 import Bottombar from "../components/Bottombar";
 
@@ -27,13 +27,13 @@ export default function ViewCategories() {
 
     const handleCategoryClick = (categoryId) => {
         setSelectedCategory(categoryId);
-        // Optionally, you can redirect to the Create Job page here
-        navigate("/CreateJob", { state: { selectedCategory: categoryId } });
+
+        navigate("/CreateJob", {state: {selectedCategory: categoryId}});
     };
 
     return (
         <div className="min-h-screen bg-gradient-to-t from-gray-200 to-transparent mt-32">
-            <Topbar text="Categories 🗃️" />
+            <Topbar text="Categories 🗃️"/>
             <div className="grid grid-cols-2 gap-2 pl-1.5 pr-1.5">
                 {categories.map((category, index) => (
                     <div
@@ -51,7 +51,7 @@ export default function ViewCategories() {
                     </div>
                 ))}
             </div>
-            <Bottombar user={user} />
+            <Bottombar user={user}/>
         </div>
     );
 }

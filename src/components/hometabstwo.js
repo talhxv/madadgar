@@ -8,12 +8,22 @@ import {Link} from "react-router-dom";
 const Hometabstwo = () => {
     return (
         <div className="fixed bottom-5 left-1/2 transform -translate-x-1/2 flex justify-around items-end w-full mb-24">
-            <Link to={'/Viewjobs'} >
-                <img src={ViewJobs} alt="Create Job" className="w-16 h-16 drop-shadow-xl" />
+            <Link to={'/Viewjobs'}>
+                <img src={ViewJobs}
+                     alt="Create Job"
+                     className="w-16 h-16 drop-shadow-xl"/>
             </Link>
-            <img src={Search} alt="Search" className="w-16 h-16 drop-shadow-xl" />
-            <img src={PendingJobs} alt="Categories" className="w-16 h-16 drop-shadow-xl" />
-            <img src={CompletedJobs} alt="Job History" className="w-16 h-16 drop-shadow-xl" />
+            <img src={Search}
+                 alt="Search"
+                 className="w-16 h-16 drop-shadow-xl"/>
+            <Link to={'/inprogressjobs'}>
+                <img src={PendingJobs}
+                     alt="Categories"
+                     className="w-16 h-16 drop-shadow-xl"/>
+            </Link>
+            <img src={CompletedJobs}
+                 alt="Job History"
+                 className="w-16 h-16 drop-shadow-xl"/>
         </div>
     );
 };

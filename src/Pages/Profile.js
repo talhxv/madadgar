@@ -6,9 +6,9 @@ import frontarrow from '../images/front-arrow.svg';
 import notificationbell from '../images/notificationbell.svg';
 import changemodes from '../images/changemode.svg';
 import logout from '../images/logout.svg';
-import { Link, useNavigate } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 
-const ProfileDrawer = ({ isOpen, onClose, userProfile }) => {
+const ProfileDrawer = ({isOpen, onClose, userProfile}) => {
     const drawerAnimation = isOpen ? 'translate-x-0' : 'translate-x-full';
     const blurBackground = isOpen ? 'blur-sm' : '';
     const userName = userProfile ? userProfile.name : 'John Doe';
@@ -16,16 +16,17 @@ const ProfileDrawer = ({ isOpen, onClose, userProfile }) => {
     const navigate = useNavigate();
 
     const handleLogout = () => {
-        // Clear user session
+
         localStorage.removeItem('user');
 
-        // Navigate to the landing page
+
         navigate('/');
     };
 
     return (
         <div className={`fixed inset-0 z-50 overflow-hidden transition-transform transform ${drawerAnimation}`}>
-            <div className={`absolute inset-0 bg-black opacity-50 ${blurBackground}`} onClick={onClose}></div>
+            <div className={`absolute inset-0 bg-black opacity-50 ${blurBackground}`}
+                 onClick={onClose}></div>
             <div className="fixed inset-y-0 right-0 max-w-xs w-full bg-white overflow-y-auto">
                 <div className="relative mb-4">
                     <img
@@ -82,12 +83,14 @@ const ProfileDrawer = ({ isOpen, onClose, userProfile }) => {
                          alt="Front Arrow"
                          className="ml-auto"/>
                 </div>
-            <div className="absolute bottom-0 right-0 pb-12">
-                <button onClick={handleLogout} className="cursor-pointer">
-                    <img src={logout} alt="Logout" />
-                </button>
+                <div className="absolute bottom-0 right-0 pb-12">
+                    <button onClick={handleLogout}
+                            className="cursor-pointer">
+                        <img src={logout}
+                             alt="Logout"/>
+                    </button>
+                </div>
             </div>
-        </div>
         </div>
     );
 };

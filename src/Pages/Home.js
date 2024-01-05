@@ -8,7 +8,7 @@ import MapboxMap from "../components/MapboxMap";
 
 const Home = () => {
     const location = useLocation();
-    const history =useNavigate();
+    const history = useNavigate();
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const [user, setUser] = useState(storedUser || (location.state && location.state.user) || null);
     const currentTime = new Date();
@@ -16,9 +16,9 @@ const Home = () => {
     const isMorning = hours >= 6 && hours < 12;
     const greeting = isMorning ? "Good Morning" : "Good Evening"
 
-console.log(user);
+    console.log(user);
     useEffect(() => {
-        // Save user to localStorage whenever it changes
+
         localStorage.setItem("user", JSON.stringify(user));
     }, [user]);
     return (
@@ -26,7 +26,7 @@ console.log(user);
             <MapboxMap/>
             <Topbar text={`${greeting},\n ${user ? user.name : 'Guest'}👋`}/>
             <Hometabs/>
-            <Bottombar user={user} />
+            <Bottombar user={user}/>
         </>
     );
 };

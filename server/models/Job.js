@@ -10,7 +10,7 @@ const jobSchema = new mongoose.Schema({
         required: true,
     },
     category: {type: mongoose.Schema.Types.ObjectId, ref: 'Category', required: true},
-    image: {type: String}, // Assuming the image is stored as a file path or URL
+    image: {type: String},
     priceRange: {
         start: String,
         end: String,

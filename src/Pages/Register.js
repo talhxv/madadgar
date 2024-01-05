@@ -1,10 +1,10 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import PopUp from './PopUpConfirm';
 import logoImage from '../images/main-ver.svg';
 import insertImg from '../images/insert.svg';
-import { Link } from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import axios from 'axios';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 
 export default function Register() {
     const [name, setName] = useState('');
@@ -19,10 +19,10 @@ export default function Register() {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post('http://localhost:3001/Register', { name, city, address, phoneno, email, password })
+            .post('http://localhost:3001/Register', {name, city, address, phoneno, email, password})
             .then((result) => {
                 console.log(result);
-                setShowPopup(true); // Show the popup after successful registration
+                setShowPopup(true);
             })
             .catch((err) => console.log(err));
     };
@@ -30,20 +30,26 @@ export default function Register() {
     const closePopup = () => {
         setShowPopup(false);
         // Add additional logic if needed
-        navigate('/Login'); // Redirect to Login page after closing the popup
+        navigate('/Login');
     };
 
     return (
         <div className="flex flex-col items-center justify-center px-6 py-8 mx-auto lg:py-0">
             <div className="flex items-center mt-5 text-2xl font-semibold text-gray-900 dark:text-white">
-                <img className="w-auto h-18" src={logoImage} alt="logo" />
+                <img className="w-auto h-18"
+                     src={logoImage}
+                     alt="logo"/>
             </div>
 
-            <a href="#" className="flex items-center mt-4 mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
-                <img className="w-auto mt-2 h-28" src={insertImg} alt="logo" />
+            <a href="#"
+               className="flex items-center mt-4 mb-6 text-2xl font-semibold text-gray-900 dark:text-white">
+                <img className="w-auto mt-2 h-28"
+                     src={insertImg}
+                     alt="logo"/>
             </a>
             <div className="p-6 space-y-4 md:space-y-6 sm:p-8">
-                <form className="space-y-4 md:space-y-6" onSubmit={handleSubmit}>
+                <form className="space-y-4 md:space-y-6"
+                      onSubmit={handleSubmit}>
                     <div className="mt-2">
                         <input
                             id="name"
@@ -169,7 +175,7 @@ export default function Register() {
                 </form>
             </div>
 
-            {showPopup && <PopUp onClose={closePopup} />}
+            {showPopup && <PopUp onClose={closePopup}/>}
         </div>
     );
 }

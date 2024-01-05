@@ -13,17 +13,16 @@ export default function Login() {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-            .post('http://localhost:3001/Login', { email, password })
+            .post('http://localhost:3001/Login', {email, password})
             .then((result) => {
                 console.log(result);
-                const { success, user } = result.data;
+                const {success, user} = result.data;
                 if (success) {
-                    // Navigate to Home with state
-                    navigate('/Home', { state: { user } });
+
+                    navigate('/Home', {state: {user}});
                 } else {
                     console.log("Login failed");
-                    // Handle failed login, show error message, etc.
-                    // Update showPopup state to true
+
                     setShowPopup(true);
                 }
             })
@@ -64,7 +63,9 @@ export default function Login() {
                                 type="email"
                                 autoComplete="email"
                                 placeholder="Email"
-                                onChange={(e)=>{setEmail(e.target.value)}}
+                                onChange={(e) => {
+                                    setEmail(e.target.value)
+                                }}
                                 required
                                 className="px-5 block w-full rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 drop-shadow-lg"
                             />
@@ -93,7 +94,9 @@ export default function Login() {
                                 name="password"
                                 type="password"
                                 placeholder="Password"
-                                onChange={(e)=>{setPassword(e.target.value)}}
+                                onChange={(e) => {
+                                    setPassword(e.target.value)
+                                }}
                                 autoComplete="current-password"
                                 required
                                 className="px-4 block w-full rounded-full border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6 drop-shadow-lg"

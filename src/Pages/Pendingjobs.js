@@ -1,6 +1,6 @@
 // ViewPendingJobs.js
 
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import Topbar from '../components/Topbar';
 import Bottombar from '../components/Bottombar';
 import Topbarzindex from '../components/Topbarzindex';
@@ -29,7 +29,7 @@ export default function ViewPendingJobs() {
     return (
         <>
             <div className="min-h-screen bg-gradient-to-t from-gray-200 to-transparent mt-16 md:mt-32 relative overflow-hidden">
-                <Topbarzindex text="Pending Jobs 🕑" />
+                <Topbarzindex text="Pending Jobs 🕑"/>
                 <div className="mt-10 px-4 md:px-8 font-Gilroy relative z-10">
                     {pendingJobs.map((job) => (
                         <div
@@ -49,13 +49,12 @@ export default function ViewPendingJobs() {
                                             End Offer: Rs {job.priceRange.end}
                                         </p>
                                     </div>
-                                    {/* Add more job details as needed */}
                                 </div>
                             </div>
                         </div>
                     ))}
                 </div>
-                <Bottombar user={user} />
+                <Bottombar user={user}/>
             </div>
         </>
     );

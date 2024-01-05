@@ -15,6 +15,7 @@ import Insertimages from "./Pages/insertimages";
 import ViewCategories from "./Pages/ViewCategories";
 import Viewjobdetails from "./Pages/Viewjobdetails";
 import Pendingjobs from "./Pages/Pendingjobs";
+import InProgressJobs from "./Pages/InProgressJobs";
 
 function App() {
     return (
@@ -47,11 +48,15 @@ function App() {
                 <Route path='/ViewJobs'
                        element={<Viewjobs/>}/>
                 <Route path={'/Viewjobdetails'}
-                       element ={<Viewjobdetails />} />
+                       element={<Viewjobdetails/>}/>
                 <Route path="/viewjobdetails/:id"
                        element={<Viewjobdetails/>}/>
                 <Route path={'/Viewpendingjobs'}
-                       element={<Pendingjobs />} />
+                       element={<Pendingjobs/>}/>
+                <Route path={'/inprogressjobs'}
+                       element={<InProgressJobs/>}/>
+                <Route path={'/inprogressjobs/:jobId'}
+                       element={<InProgressJobs/>}/>
             </Routes>
         </Router>
     );

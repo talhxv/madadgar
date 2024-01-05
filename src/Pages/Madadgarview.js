@@ -7,7 +7,7 @@ import Hometabstwo from "../components/hometabstwo";
 
 export default function Madadgarview() {
     const location = useLocation();
-    const history= useNavigate();
+    const history = useNavigate();
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const [user, setUser] = useState(storedUser || (location.state && location.state.user) || null);
     const currentTime = new Date();
@@ -17,15 +17,15 @@ export default function Madadgarview() {
 
 
     useEffect(() => {
-        // Save user to localStorage whenever it changes
+
         localStorage.setItem("user", JSON.stringify(user));
     }, [user]);
     return (
         <>
-            <Mapboxtwo />
+            <Mapboxtwo/>
             <Topbar text={`${greeting},\n ${user ? user.name : 'Guest'}👋`}/>
             <Hometabstwo/>
-            <Bottombar user={user} />
+            <Bottombar user={user}/>
         </>
     );
 };
