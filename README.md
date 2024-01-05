@@ -27,7 +27,7 @@ Madadgar simplifies the process of finding reliable service providers for home-r
 1. Clone the repository:
 
    ```bash
-   git clone https://github.com/your-username/madadgar.git
+   git clone https://github.com/talhxv/madadgar.git
    cd madadgar
    ```
 
