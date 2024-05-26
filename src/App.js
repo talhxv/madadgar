@@ -21,6 +21,8 @@ function App() {
     return (
         <Router>
             <Routes>
+                <Route path="/madadgaar"
+                       element={<Landing/>}/>
                 <Route path="/"
                        element={<Landing/>}/>
                 <Route path="/login"
