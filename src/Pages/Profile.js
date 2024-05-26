@@ -76,7 +76,6 @@ const ProfileDrawer = ({isOpen, onClose, userProfile}) => {
                             <img src={changemodes}
                                  alt="Favorites"/>
                             <h3 className="text-base font-medium font-Gilroy text-gray-800">Switch Modes </h3>
-
                         </div>
                     </Link>
                     <img src={frontarrow}

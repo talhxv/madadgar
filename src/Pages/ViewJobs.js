@@ -1,11 +1,7 @@
-// Viewjobs.js
-
-import React, {useState, useEffect} from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
-import Topbar from '../components/Topbar';
-import Bottombar from '../components/Bottombar';
+import React, { useState, useEffect } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import Topbarzindex from '../components/Topbarzindex';
-import Viewjobdetails from './Viewjobdetails'; // Import the new page
+import Bottombar from '../components/Bottombar';
 
 export default function Viewjobs() {
     const location = useLocation();
@@ -13,11 +9,12 @@ export default function Viewjobs() {
     const [jobs, setJobs] = useState([]);
     const storedUser = JSON.parse(localStorage.getItem("user"));
     const [user, setUser] = useState(storedUser || (location.state && location.state.user) || null);
+
     useEffect(() => {
-        // Fetch jobs data from your backend API
+        // Fetch all jobs initially
         const fetchJobs = async () => {
             try {
-                const response = await fetch('http://localhost:3001/api/jobs'); // Update with your actual API endpoint
+                const response = await fetch(`http://localhost:3001/api/jobs?userName=${user.name}`);
                 const data = await response.json();
                 setJobs(data);
                 console.log(data);
@@ -27,21 +24,37 @@ export default function Viewjobs() {
         };
 
         fetchJobs();
-    }, []);
+    }, [user]);
+
+    useEffect(() => {
+        // If a job has been accepted, re-fetch and filter out accepted jobs
+        if (user) {
+            const fetchAcceptedJobs = async () => {
+                try {
+                    const response = await fetch(`http://localhost:3001/api/jobs/accepted?userName=${user.name}`);
+                    const data = await response.json();
+                    setJobs(data);
+                    console.log(data);
+                } catch (error) {
+                    console.error('Error fetching accepted jobs:', error);
+                }
+            };
+
+            fetchAcceptedJobs();
+        }
+    }, [user]);
 
     const handleButtonClick = (job) => {
-
         console.log('See Details clicked');
-
-        navigate(`/viewjobdetails/${job._id}`, {state: {job}});
+        navigate(`/viewjobdetails/${job._id}`, { state: { job } });
     };
 
     return (
         <>
             <div className="min-h-screen bg-gradient-to-t from-gray-200 to-transparent mt-16 md:mt-32 relative overflow-hidden">
-                <Topbarzindex text="View Jobs 👁️"/>
+                <Topbarzindex text="View Jobs 👁️" />
                 <div className="mt-10 px-4 md:px-8 font-Gilroy relative z-10">
-                    {jobs.map((job) => (
+                    {Array.isArray(jobs) && jobs.map((job) => (
                         <div
                             key={job._id}
                             className="job-item-container mb-4 p-4 md:p-6 border border-gray-300 rounded-2xl shadow-md overflow-hidden relative group"
@@ -78,7 +91,7 @@ export default function Viewjobs() {
                         </div>
                     ))}
                 </div>
-                <Bottombar user={user}/>
+                <Bottombar user={user} />
             </div>
         </>
     );

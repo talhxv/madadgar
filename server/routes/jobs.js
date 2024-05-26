@@ -73,11 +73,12 @@ router.get('/api/pendingJobs/:userName', async (req, res) => {
 
 router.get('/api/jobs', async (req, res) => {
     try {
-        const jobs = await Job.find();
+        const { userName } = req.query; // Get the username from query parameters
+        const jobs = await Job.find({ createdBy: { $ne: userName } }); // Exclude jobs created by the current user
         res.status(200).json(jobs);
     } catch (error) {
         console.error(error);
-        res.status(500).json({success: false, message: 'Internal server error'});
+        res.status(500).json({ success: false, message: 'Internal server error' });
     }
 });
 

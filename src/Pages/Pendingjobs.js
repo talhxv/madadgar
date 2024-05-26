@@ -1,10 +1,7 @@
-// ViewPendingJobs.js
-
-import React, {useState, useEffect} from 'react';
-import Topbar from '../components/Topbar';
-import Bottombar from '../components/Bottombar';
+import React, { useState, useEffect } from 'react';
 import Topbarzindex from '../components/Topbarzindex';
-import {useLocation, useNavigate} from "react-router-dom";
+import Bottombar from '../components/Bottombar';
+import { useLocation } from "react-router-dom";
 
 export default function ViewPendingJobs() {
     const location = useLocation();
@@ -17,6 +14,7 @@ export default function ViewPendingJobs() {
             try {
                 const response = await fetch(`http://localhost:3001/api/pendingJobs/${user.name}`);
                 const data = await response.json();
+
                 setPendingJobs(data);
             } catch (error) {
                 console.error('Error fetching pending jobs:', error);
@@ -54,8 +52,8 @@ export default function ViewPendingJobs() {
                         </div>
                     ))}
                 </div>
-                <Bottombar user={user}/>
+                <Bottombar user={user} />
             </div>
         </>
     );
-};
+}

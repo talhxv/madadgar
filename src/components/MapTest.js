@@ -1,3 +1,4 @@
+/*
 import React, {useEffect} from 'react';
 import mapboxgl from 'mapbox-gl';
 import 'mapbox-gl/dist/mapbox-gl.css';
@@ -61,4 +62,4 @@ const MapboxMap = () => {
                 id="map"></div>;
 };
 
-export default MapboxMap;
+export default MapboxMap;*/
